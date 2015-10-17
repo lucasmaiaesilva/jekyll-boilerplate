@@ -12,24 +12,22 @@ var messages = {
 	jekyllBuild: '<span style="color: green"> Jekyll Bolerplate is running: </span> $ jekyll build'
 };
 
-/* Build the Jekyll Site
- */
+/* --- Build the Jekyll Site --- */
+
 gulp.task('jekyll-build', function (done) {
 	browserSync.notify(messages.jekyllBuild);
 	return cp.spawn('jekyll', ['build'], {stdio: 'inherit'})
 		.on('close', done);
 });
 
-/**
- * Rebuild Jekyll & do page reload
- */
+/* --- Rebuild Jekyll & do page reload --- */
+
 gulp.task('jekyll-rebuild', ['jekyll-build'], function () {
 	browserSync.reload();
 });
 
-/**
- * Wait for jekyll-build, then launch the Server
- */
+/* --- Wait for jekyll-build, then launch the Server --- */
+
 gulp.task('browser-sync', ['jekyll-build'], function() {
 	browserSync({
 		server: {
@@ -38,8 +36,7 @@ gulp.task('browser-sync', ['jekyll-build'], function() {
 	});
 });
 
-/**
- * Stylus task
+/*  --- Sass tas
  */
 gulp.task('stylus', function(){
 		gulp.src('src/styl/main.styl')

@@ -20,5 +20,14 @@
   "bugs": {
     "url": "https://github.com/jjaderg/jekyll-boilerplate/issues"
   },
-  "homepage": "https://github.com/jjaderg/jekyll-boilerplate#readme"
+  "homepage": "https://github.com/jjaderg/jekyll-boilerplate#readme",
+  "devDependencies": {
+    "browser-sync": "^2.9.11",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-imagemin": "^2.3.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-sass": "^2.0.4",
+    "gulp-uglify": "^1.4.2"
+  }
 }
