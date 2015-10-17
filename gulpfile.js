@@ -2,6 +2,7 @@
 
 var gulp        = require('gulp')
    ,plumber     = require('gulp-plumber')
+   ,sass        = require('gulp-sass');
    ,browserSync = require('browser-sync')
    ,uglify      = require('gulp-uglify')
    ,concat      = require('gulp-concat')
@@ -36,18 +37,15 @@ gulp.task('browser-sync', ['jekyll-build'], function() {
 	});
 });
 
-/*  --- Sass tas
- */
-gulp.task('stylus', function(){
-		gulp.src('src/styl/main.styl')
+/*  --- Sass task --- */
+
+gulp.task('sass', function(){
+		gulp.src('src/sass/main.sass')
 		.pipe(plumber())
-		.pipe(stylus({
-			use:[koutoSwiss(), prefixer(), jeet(),rupture()],
-			compress: true
-		}))
+		.pipe(sass(sassOptions).on('error', sass.logError))
 		.pipe(gulp.dest('_site/assets/css/'))
 		.pipe(browserSync.reload({stream:true}))
-		.pipe(gulp.dest('assets/css'))
+		.pipe(gulp.dest('dist/css'))
 });
 
 /**
