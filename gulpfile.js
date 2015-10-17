@@ -1,22 +1,18 @@
-var gulp        = require('gulp'),
-	plumber     = require('gulp-plumber'),
-	browserSync = require('browser-sync'),
-	stylus      = require('gulp-stylus'),
-	uglify      = require('gulp-uglify'),
-	concat      = require('gulp-concat'),
-	jeet        = require('jeet'),
-	rupture     = require('rupture'),
-	koutoSwiss  = require('kouto-swiss'),
-	prefixer    = require('autoprefixer-stylus'),
-	imagemin    = require('gulp-imagemin'),
+'use strict';
+
+var gulp        = require('gulp')
+   ,plumber     = require('gulp-plumber')
+   ,browserSync = require('browser-sync')
+   ,uglify      = require('gulp-uglify')
+   ,concat      = require('gulp-concat')
+   ,imagemin    = require('gulp-imagemin')
 	cp          = require('child_process');
 
 var messages = {
-	jekyllBuild: '<span style="color: grey">Running:</span> $ jekyll build'
+	jekyllBuild: '<span style="color: green"> Jekyll Bolerplate is running: </span> $ jekyll build'
 };
 
-/**
- * Build the Jekyll Site
+/* Build the Jekyll Site
  */
 gulp.task('jekyll-build', function (done) {
 	browserSync.notify(messages.jekyllBuild);
