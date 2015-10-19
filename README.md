@@ -1,23 +1,27 @@
 ![Jekyll Boilerplate banner](jbanner.png)
 
-# Jekyll Boilerplate
+Jekyll Boilerplate
+==================
 
 A boilerplate using `Jekyll`, `Sass`, `Susy` and `Gulp`.
+
+---
 
 ### Getting up and running
 
 #### First of all
 
 Install the dependencies to run this boilerplate:
+> This boilerplate uses the latest versions
 
-- [Node](http://nodejs.org/)
-- [Jekyll](http://jekyllrb.com/)
-- [Gulp](http://gulpjs.com/)
-- [Sass](http://sass-lang.com)
-- [Susy](http://susy.oddbird.net)
+ - [Node](http://nodejs.org/)
+ - [Jekyll](http://jekyllrb.com/)
+ - [Gulp](http://gulpjs.com/)
+ - [Sass](http://sass-lang.com)
+ - [Susy](http://susy.oddbird.net)
 
 
-* Clone this repository from
+#### Clone this repository from
 
 ```sh
 # Clone this repository from
@@ -28,8 +32,8 @@ $ cd new_project
 $ npm install
 ```
 
-* Run `npm install` from the root directory
+1. Run `npm install` from the root directory
 
-* Run `gulp`  (may require installing Gulp globally `npm install gulp -g`)
+2. Run `gulp`  (may require installing Gulp globally `npm install gulp -g`)
 
-Your browser will automatically be opened and directed to the `browser-sync` proxy address
+3. Your browser will automatically be opened and directed to the `browser-sync` proxy address
