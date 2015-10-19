@@ -40,12 +40,17 @@ gulp.task('browser-sync', ['jekyll-build'], function() {
 /*  --- Sass task --- */
 
 gulp.task('sass', function(){
-	gulp.src(['./assets/css/main.scss', './assets/css/partials/*.scss'])
-	  .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-	  .pipe(gulp.dest('dist/css'))
-    .pipe(browserSync.reload({stream:true}))
+    return gulp.src('src/sass/main.sass')
+		.pipe(plumber())
+        .pipe(sass({
+            compress: true
+        }))
+        .on('error', function (err) { console.log(err.message); })
+		.pipe(gulp.dest('_site/assets/css/'))
+		.pipe(gulp.dest('dist/css'))
+        .pipe(browserSync.reload({stream:true}))
 });
-  
+
 /* --- Javascript Task --- */
 
 gulp.task('js', function(){
@@ -64,7 +69,7 @@ gulp.task('imagemin', function() {
 		.pipe(imagemin({
              optimizationLevel: 3
             ,progressive: true
-            ,interlaced: true
+            ,interlaced: true 
          }))
 		.pipe(gulp.dest('dist/img/'));
 });
