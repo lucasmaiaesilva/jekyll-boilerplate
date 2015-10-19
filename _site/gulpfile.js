@@ -40,15 +40,10 @@ gulp.task('browser-sync', ['jekyll-build'], function() {
 /*  --- Sass task --- */
 
 gulp.task('sass', function(){
-    return gulp.src('src/sass/main.sass')
-		.pipe(plumber())
-        .pipe(sass({
-            compress: true
-        }))
-        .on('error', function (err) { console.log(err.message); })
-		.pipe(gulp.dest('_site/assets/css/'))
-		.pipe(gulp.dest('dist/css'))
-        .pipe(browserSync.reload({stream:true}))
+	gulp.src(['./assets/css/main.scss', './assets/css/partials/*.scss'])
+	  .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+	  .pipe(gulp.dest('dist/css'))
+    .pipe(browserSync.reload({stream:true}))
 });
 
 /* --- Javascript Task --- */
@@ -63,16 +58,16 @@ gulp.task('js', function(){
 
 /* --- Imagemin Task --- */
 
-gulp.task('imagemin', function() {
-	return gulp.src('src/img/**/*.{jpg,png,gif}')
-		.pipe(plumber())
-		.pipe(imagemin({
-             optimizationLevel: 3
-            ,progressive: true
-            ,interlaced: true 
-         }))
-		.pipe(gulp.dest('dist/img/'));
-});
+// gulp.task('imagemin', function() {
+// 	return gulp.src('src/img/**/*.{jpg,png,gif}')
+// 		.pipe(plumber())
+// 		.pipe(imagemin({
+//              optimizationLevel: 3
+//             ,progressive: true
+//             ,interlaced: true
+//          }))
+// 		.pipe(gulp.dest('dist/img/'));
+// });
 
 /* --- Watch stylus files for changes & recompile
  * --- Watch html/md files, run jekyll & reload BrowserSync
@@ -81,7 +76,7 @@ gulp.task('imagemin', function() {
 gulp.task('watch', function () {
 	gulp.watch('src/sass/**/*.sass', ['sass']);
 	gulp.watch('src/js/**/*.js', ['js']);
-	gulp.watch('src/img/**/*.{jpg,png,gif}', ['imagemin']);
+	// gulp.watch('src/img/**/*.{jpg,png,gif}', ['imagemin']);
 	gulp.watch(['*.html', '_includes/*.html', '_layouts/*.html', '_posts/*'], ['jekyll-rebuild']);
 });
 
